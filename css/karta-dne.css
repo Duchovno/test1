@@ -1,36 +1,46 @@
-body {
+html, body {
   margin: 0;
   padding: 0;
   background-color: #0a0a0a;
   color: #fff;
   font-family: 'Georgia', serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
-  overflow: hidden;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- INTRO TEXT CENTERED VERTIKÁLNĚ I HORIZONTÁLNĚ --- */
 #intro-text {
   opacity: 0;
   font-size: 1.6rem;
   text-align: center;
   max-width: 90%;
+  height: 100vh; /* celý viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: fadeIn 4s ease forwards;
   animation-delay: 1s;
 }
 
+/* --- KONTEJNER KARTY --- */
 #card-container {
   display: none;
   margin-top: 2rem;
   perspective: 1000px;
 }
 
+/* --- KARTA --- */
 .card {
   width: 250px;
   height: 400px;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3a/The_Magician_Tarot_Card.jpg');
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -66,32 +76,29 @@ body {
   background-position: center;
 }
 
+/* --- VÝKLAD --- */
 #meaning {
   display: none;
-  margin-top: 2rem;
+  margin: 2rem 1rem 4rem; /* dost místa dole pro scroll i tlačítko */
   font-size: 1.2rem;
-  max-width: 80%;
+  max-width: 90%;
   text-align: center;
   color: #d9b3ff;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  /* Umožní scroll v rámci stránky */
 }
 
-.back-btn-container {
-  margin-top: 2rem;
-  text-align: center;
-  animation: fadeIn 2s ease forwards;
-  opacity: 0;
-  animation-delay: 1s;
-}
-
+/* --- TLAČÍTKO ZPĚT --- */
 .back-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
   background-color: #7e49a6;
   color: #fff;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   border: none;
   border-radius: 30px;
@@ -112,6 +119,7 @@ body {
   box-shadow: 0 0 15px #b787ff, 0 0 25px #a26ee2;
 }
 
+/* --- ANIMACE --- */
 @keyframes fadeIn {
   to {
     opacity: 1;
